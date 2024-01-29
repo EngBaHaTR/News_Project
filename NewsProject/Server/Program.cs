@@ -17,7 +17,7 @@ namespace NewsProject
             // Add services to the container.
             var conectionstring = builder.Configuration.GetConnectionString("DefultConnection");
             builder.Services.AddDbContext<AppDbContext>(option => option.UseSqlServer(conectionstring));
-            //builder.Services.AddScoped<MainInterface<Category> , CategoriesServices>();
+           
            // builder.Services.AddScoped<MainInterface<NewsList>, MainServices<NewsList>>();
             builder.Services.AddScoped<CategoriesServices>();
             builder.Services.AddScoped<NewsListServices>();
