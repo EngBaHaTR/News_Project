@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure;
+using Microsoft.AspNetCore.Mvc;
 using NewsProject.Server.Repository.Main;
 using NewsProject.Server.Repository.Services;
 using NewsProject.Shared.Models;
@@ -38,14 +39,27 @@ namespace CateProject.Server.Controllers
         [HttpPost]
         public async Task<IActionResult> AddRowe([FromBody] Category value)
         {
-           if (ModelState.IsValid)
+            try
             {
-                return Ok(value);
+                if (ModelState.IsValid)
+                {
+                     
+                    if (services.Exesist(value.Name) == null)
+                        return Ok(await services.AddRowe(value));   
+
+                    ModelState.AddModelError("alredy exesist", "Olrdy exext");
+                    return BadRequest(ModelState);
+                }
+                
+                return BadRequest(ModelState);
             }
-            var respons = await services.AddRowe(value);
-            if (respons == null)
-                return BadRequest("something is wrong");
-            return Ok("this Item wase Added!!");
+            catch 
+            {
+                ModelState.AddModelError("Er", "Catech error");
+                return BadRequest(ModelState);
+            }
+          
+           
         }
 
         // PUT api/<CategoryesController>/5

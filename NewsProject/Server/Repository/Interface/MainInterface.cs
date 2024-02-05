@@ -9,6 +9,6 @@ namespace NewsProject.Server.Repository.Main
         Task<T?>GetbyId(int id);
         Task<T> AddRowe(T entity);
         Task<T?>Update(int id, T entity);
-        Task Delete(int id);   
+        Task Delete(int id);
     }
 }

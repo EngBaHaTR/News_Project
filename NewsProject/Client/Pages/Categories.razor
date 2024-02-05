@@ -1,0 +1,42 @@
+﻿@page "/category"
+
+<PageTitle>category</PageTitle>
+
+<h1>List of Category</h1>
+
+
+<div class="card">
+    <div class="card-header">
+        <h2>Categoris List <a href="NewCategoris"><h5 class="btn btn-dark">New Categoris</h5></a> </h2>
+    </div>
+    <div class="card-body">
+        @if (_categories == null)
+        {
+            <p><em>Loding ...</em></p>
+        }
+        else
+        {
+            <table class="table table-hover table-striped  ">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name Category</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cate in _categories)
+                    {
+                        <tr>
+                            <td>@cate.Id</td>
+                            <td>@cate.Name</td>
+                            <td ><a href=""  class="oi oi-delete btn btn-dark " /><a href="" class="oi oi-delete btn btn-dark " /><a href="" class="oi oi-delete btn btn-dark " /></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+    </div>
+</div>
+

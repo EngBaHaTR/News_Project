@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 using NewsProject.Server.Context;
 using NewsProject.Shared.Models;
+using System.Security.Cryptography;
 
 namespace NewsProject.Server.Repository.Services
 {
@@ -12,20 +14,28 @@ namespace NewsProject.Server.Repository.Services
             _context = context;
         }
 
-        public new async Task<Category?> AddRowe(Category entity)
+        public new async Task<String?> AddRowe(Category entity)
         {
-            var cate = _context.Categories.FirstAsync(e => e.Name == entity.Name);
-            if (cate==null) 
-            {
+           
+
                 await _context.Categories.AddAsync(entity);
-                _context.SaveChanges();
-                return null;
-            }
-            else return null;
-
-
+                        _context.SaveChanges();      
+            return "this is olredyyyyyyy";
 
         }
+        public async Task<string?> Exesist(string name) 
+        {
+            var c = await _context.Categories.Where(e=>e.Name == name).FirstOrDefaultAsync();
+            if (c != null) 
+              return "Exext";
+
+            return null;
+
+        }
+
+
+
+
 
     }
 }

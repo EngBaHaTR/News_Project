@@ -60,5 +60,7 @@ namespace NewsProject.Server.Repository.Services
               _context.Set<T>().Remove(item);
               _context.SaveChanges(); 
         }
+
+        
     }
 }
