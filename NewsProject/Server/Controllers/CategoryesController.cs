@@ -39,27 +39,20 @@ namespace CateProject.Server.Controllers
         [HttpPost]
         public async Task<IActionResult> AddRowe([FromBody] Category value)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                     
-                    if (services.Exesist(value.Name) == null)
-                        return Ok(await services.AddRowe(value));   
-
-                    ModelState.AddModelError("alredy exesist", "Olrdy exext");
-                    return BadRequest(ModelState);
-                }
-                
-                return BadRequest(ModelState);
-            }
-            catch 
-            {
-                ModelState.AddModelError("Er", "Catech error");
-                return BadRequest(ModelState);
-            }
-          
            
+            if (ModelState.IsValid)
+                {
+                    if (!await services.Exsiset(e=> e.Name ==value.Name))
+                           return Ok(await  services.AddRowe(value));
+                
+                    ModelState.AddModelError("alredy exesist", "Olrdy exext");
+                    return BadRequest(ModelState);               
+                }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+
         }
 
         // PUT api/<CategoryesController>/5

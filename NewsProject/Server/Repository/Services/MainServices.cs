@@ -6,11 +6,11 @@ namespace NewsProject.Server.Repository.Services
 {
     public class MainServices<T> : MainInterface<T> where T : class
     {
-        private readonly AppDbContext _context;      
+        private readonly AppDbContext _context;
         public MainServices(AppDbContext context) { _context = context; }
         public async Task<IEnumerable<T>?> GetAll()
         {
-           var respons=await _context.Set<T>().ToListAsync();
+            var respons = await _context.Set<T>().ToListAsync();
             if (respons == null)
                 return null;
             return respons;
@@ -31,10 +31,10 @@ namespace NewsProject.Server.Repository.Services
             return respons;
         }
 
-        public  async Task<T> AddRowe(T entity)
+        public async Task<T> AddRowe(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
-            _context.SaveChanges(); 
+            _context.SaveChanges();
             return entity;
         }
         public async Task<T?> Update(int id, T entity)
@@ -54,13 +54,21 @@ namespace NewsProject.Server.Repository.Services
         }
         public async Task Delete(int id)
         {
-              var item = await GetbyId(id);
-              if (item == null)
-                return ;
-              _context.Set<T>().Remove(item);
-              _context.SaveChanges(); 
+            var item = await GetbyId(id);
+            if (item == null)
+                return;
+            _context.Set<T>().Remove(item);
+            _context.SaveChanges();
         }
-
-        
+       
+        public async Task<bool> Exsiset(Func<T, bool> test)
+        {
+            List<T> list = await _context.Set<T>().ToListAsync(); 
+            foreach (T item in list)
+                if (test(item))
+                    return true;
+            return false;
+        }
+       
     }
 }

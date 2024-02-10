@@ -13,29 +13,11 @@ namespace NewsProject.Server.Repository.Services
         {
             _context = context;
         }
-
-        public new async Task<String?> AddRowe(Category entity)
-        {
-           
-
-                await _context.Categories.AddAsync(entity);
-                        _context.SaveChanges();      
-            return "this is olredyyyyyyy";
-
-        }
-        public async Task<string?> Exesist(string name) 
-        {
-            var c = await _context.Categories.Where(e=>e.Name == name).FirstOrDefaultAsync();
-            if (c != null) 
-              return "Exext";
-
-            return null;
-
-        }
-
-
-
-
+        //public async Task <bool> Exesist(Category entity) 
+        //{
+        //    return await _context.Categories.AnyAsync(e => e.Name == entity.Name);  
+               
+        //}
 
     }
 }

@@ -10,5 +10,6 @@ namespace NewsProject.Server.Repository.Main
         Task<T> AddRowe(T entity);
         Task<T?>Update(int id, T entity);
         Task Delete(int id);
+        Task<bool> Exsiset(Func<T,bool> test);
     }
 }

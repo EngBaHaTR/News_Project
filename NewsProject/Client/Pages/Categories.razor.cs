@@ -15,5 +15,13 @@ namespace NewsProject.Client.Pages
             _categories = await services.GetAllAsync("api/Categoryes/GetAllItems");
             
         }
+        private bool collapseNavMenu = true;
+
+        private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+        private void ToggleNavMenu()
+        {
+            collapseNavMenu = !collapseNavMenu;
+        }
     }
 }

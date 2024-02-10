@@ -12,11 +12,17 @@ namespace NewsProject.Client.Repo
         {
             _http = http;
         }
-      
+
+        
+
         public async Task<List<T>> GetAllAsync(string e)
         {
             var respons = await _http.GetFromJsonAsync<List<T>>(e);
             return respons;
+        }
+        public async Task AddRowAsync(T item, string url)
+        {
+            await _http.PostAsJsonAsync<T>(url, item);
         }
     }
 }

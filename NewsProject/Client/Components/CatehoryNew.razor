@@ -1,0 +1,22 @@
+﻿@page "/NewCategoris"
+
+
+
+
+<div class="card" >
+    <div class="card-header">
+        <h1><span>Add New Category</span></h1>
+    </div>
+
+    <div class="card-body" >
+        <EditForm Model="category" OnValidSubmit="Creat">
+            <h1>Enter name</h1>
+            <div class="input-group mb-3">
+               
+                <InputText class="form-control  " @bind-Value="category.Name" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"> </InputText>
+                <button class="btn btn-outline-success" type="submit" id="button-addon2">Save</button>
+            </div>
+        </EditForm>
+        
+    </div>
+</div>

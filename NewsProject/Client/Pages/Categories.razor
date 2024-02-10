@@ -2,12 +2,11 @@
 
 <PageTitle>category</PageTitle>
 
-<h1>List of Category</h1>
-
+<h1> Lists of Category</h1>
 
 <div class="card">
     <div class="card-header">
-        <h2>Categoris List <a href="NewCategoris"><h5 class="btn btn-dark">New Categoris</h5></a> </h2>
+        <h2 >Categoris List <a class="float-end" href="NewCategoris"><h5 class="btn btn-dark">New Categoris</h5></a> </h2>
     </div>
     <div class="card-body">
         @if (_categories == null)
@@ -16,27 +15,70 @@
         }
         else
         {
-            <table class="table table-hover table-striped  ">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name Category</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var cate in _categories)
-                    {
-                        <tr>
-                            <td>@cate.Id</td>
-                            <td>@cate.Name</td>
-                            <td ><a href=""  class="oi oi-delete btn btn-dark " /><a href="" class="oi oi-delete btn btn-dark " /><a href="" class="oi oi-delete btn btn-dark " /></td>
+            
+                <table class="table table-hover table-striped  ">
+                <thead class="table-dark  ">
+                        <tr >
+                            <th>#</th>
+                            <th>Name Category</th>
+                            <th>Action</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                <tbody >
+                        @foreach (var cate in _categories)
+                        {
+                            <tr >
+                                <td>@cate.Id</td>
+                                <td>@cate.Name</td>
+                            <td>
+                                <div class=" list-inline-item ">
+                                    <a class="nav-link" href="" Match="NavLinkMatch.All">
+                                        <span class="oi oi-home" aria-hidden="true"> </span>
+                                    </a>
+
+                                </div>
+                            </td>
+                            <td>
+                                <div class="" @onclick="ToggleNavMenu">
+                                    <nav class=" list-inline ">
+                                        
+                                        <div class=" list-inline-item ">
+                                            <NavLink class="nav-link" href="category">
+
+                                                <span class="oi oi-list" aria-hidden="true"></span>
+                                            </NavLink>
+                                        </div>
+                                        <div class=" list-inline-item ">
+                                            <NavLink class="nav-link" href="fetchdata">
+                                                <span class="oi oi-list-rich" aria-hidden="true"></span>
+                                            </NavLink>
+                                        </div>
+                                        <div class=" list-inline-item ">
+                                            <NavLink class="nav-link" href="bahaa">
+                                                <span class="oi oi-account-login" aria-hidden="true"></span>
+                                            </NavLink>
+                                        </div>
+
+                                    </nav>
+                                </div>
+                            </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+           
         }
 
     </div>
 </div>
+
+<div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">Example label</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+</div>
+
+
+
+
 

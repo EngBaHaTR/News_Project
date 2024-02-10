@@ -12,7 +12,7 @@ namespace NewsProject.Shared.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage ="الفئة مطلوب")]
-        [MaxLength(10,ErrorMessage ="baha hala")]
+        [MaxLength(20,ErrorMessage ="Max lenth 20!!!")]
         public string Name { get; set; }
 
     }
